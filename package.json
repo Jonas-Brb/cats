@@ -17,6 +17,8 @@
     "tailwind-merge": "^2.4.0"
   },
   "devDependencies": {
+    "@tanstack/eslint-plugin-query": "^5.51.15",
+    "@tanstack/react-query-devtools": "^5.51.16",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

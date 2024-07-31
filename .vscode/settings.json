@@ -1,0 +1,16 @@
+{
+  "workbench.colorCustomizations": {
+    "[Monokai]": {
+      "editorHoverWidget.highlightForeground": "#00FFFF",
+      "sideBySideEditor.border": "#ff4081",
+      "minimap.foregroundOpacity": "#00FFFF"
+    },
+    "editorCursor.foreground": "#00FFFF",
+    "editorRuler.foreground": "#ff4081",
+    "tab.activeBorder": "#ff0000",
+    "tab.activeBorderTop": "#ff0000",
+    "activityBar.background": "#203218",
+    "titleBar.activeBackground": "#2C4721",
+    "titleBar.activeForeground": "#F9FCF8"
+  }
+}

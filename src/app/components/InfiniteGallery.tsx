@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils/cn'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import React, { useEffect, useRef } from 'react'
 import { ImagesQuery, imagesQueryOptions } from '../queries'
+import { AdSlot, useAds } from './Ads'
 
 const MANUAL_LIMIT = 3
 
@@ -31,9 +32,14 @@ export const InfiniteGallery: React.FC = () => {
     }
   }, [isManualFetch, query])
 
+  const { ref: adsContainerRef } = useAds(query)
+
   return (
     <>
-      <div className="mx-auto grid w-full grid-cols-1 place-items-center gap-4 2xl:container sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+      <div
+        ref={adsContainerRef}
+        className="mx-auto grid w-full grid-cols-1 place-items-center gap-4 2xl:container sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
+      >
         {query.data?.pages.map((page, pageIndex) => (
           <React.Fragment key={pageIndex}>
             {page.map((cat, catIndex) => (
@@ -50,6 +56,11 @@ export const InfiniteGallery: React.FC = () => {
                     />
                   </div>
                 </div>
+                <AdSlot
+                  query={query}
+                  pageIndex={pageIndex}
+                  catIndex={catIndex}
+                />
               </React.Fragment>
             ))}
           </React.Fragment>

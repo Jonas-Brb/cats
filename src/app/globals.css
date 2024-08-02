@@ -16,6 +16,15 @@
   }
 }
 
+.ad-container {
+  width: 100%;
+}
+
+.ad-slot {
+  display: flex;
+  align-items: center;
+}
+
 
 @layer utilities {
   .text-balance {

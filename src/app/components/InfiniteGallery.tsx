@@ -1,13 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
 import { Button } from '@/lib/components/Button'
-import { cn } from '@/lib/utils/cn'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import React, { useEffect, useRef } from 'react'
-import { ImagesQuery, imagesQueryOptions } from '../queries'
+import { imagesQueryOptions } from '../queries'
 import { AdSlot, useAds } from './Ads'
 
-const MANUAL_LIMIT = 3
+const MANUAL_LIMIT = 5
 
 export const InfiniteGallery: React.FC = () => {
   const query = useInfiniteQuery(imagesQueryOptions)
@@ -36,25 +35,20 @@ export const InfiniteGallery: React.FC = () => {
 
   return (
     <>
-      <div
-        ref={adsContainerRef}
-        className="mx-auto grid w-full grid-cols-1 place-items-center gap-4 2xl:container sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
-      >
+      <div ref={adsContainerRef} className={'photo-gallery'}>
         {query.data?.pages.map((page, pageIndex) => (
           <React.Fragment key={pageIndex}>
             {page.map((cat, catIndex) => (
               <React.Fragment key={cat.id}>
-                <div className={'relative w-full sm:h-0 sm:[padding-top:100%]'}>
-                  <div className="w-full sm:absolute sm:inset-0">
-                    <img
-                      className="m-auto h-full sm:w-full sm:object-contain"
-                      src={cat.url}
-                      height={cat.height}
-                      width={cat.width}
-                      loading="lazy"
-                      alt="Photo of a cat"
-                    />
-                  </div>
+                <div className="photo-gallery__item">
+                  <img
+                    className=""
+                    src={cat.url}
+                    height={cat.height}
+                    width={cat.width}
+                    loading="lazy"
+                    alt="Photo of a cat"
+                  />
                 </div>
                 <AdSlot
                   query={query}

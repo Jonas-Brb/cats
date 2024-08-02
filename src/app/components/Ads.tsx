@@ -40,19 +40,7 @@ export const useAds = (query: ImagesQuery) => {
 
         googletag.cmd.push(() => {
           const slot = googletag
-            .defineSlot(
-              '/6355419/Travel/Europe/France/Paris',
-              // if continous width/height was supported we could use the ad container square dimnesions to set ad dimensions on request.
-              // if discrete width/height was supported that cover multiple ad container square dimensions we could use the ad container square dimensions to set ad dimensions on request.
-              // ads would need to be cleared and added again on window resize both for fixed ad size and responsive ad size mode.
-              // ads do not get updated on window resize automatically because they are set on initial ad request.
-              // window resize watcher would need to be debounced because ads cannot be requested too frequently.
-              [
-                100 ?? document.getElementById(adSlot.id)?.clientWidth,
-                100 ?? document.getElementById(adSlot.id)?.clientHeight,
-              ],
-              adSlot.id,
-            )!
+            .defineSlot('/6355419/Travel/Europe', [300, 250], adSlot.id)!
             .addService(googletag.pubads())
 
           googletag.display(slot)
@@ -71,7 +59,7 @@ export const AdSlot: React.FC<{
 }> = ({ query, pageIndex, catIndex }) => {
   return (
     getIsAdSlot(query, pageIndex, catIndex) && (
-      <div className="ad-container">
+      <div className="ad-container photo-gallery__item">
         <div
           id={getAdSlotId(`${pageIndex}-${catIndex}`)}
           className="ad-slot"

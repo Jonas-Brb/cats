@@ -9,7 +9,7 @@ import { Cat } from './types'
 
 type PagePram = {
   page: number
-  limit?: number
+  limit: number
 }
 
 export const imagesQueryOptions = infiniteQueryOptions<
@@ -26,9 +26,9 @@ export const imagesQueryOptions = infiniteQueryOptions<
   ],
   queryFn: async context => {
     const urlSearchParams = new URLSearchParams({
-      limit: (context.pageParam.limit ?? 25).toString(),
+      limit: context.pageParam.limit.toString(),
       order: 'DESC',
-      page: (context.pageParam.page ?? 1).toString(),
+      page: context.pageParam.page.toString(),
     })
 
     const response = await fetch(
@@ -45,7 +45,7 @@ export const imagesQueryOptions = infiniteQueryOptions<
 
     return response.json() as unknown as Cat[]
   },
-  initialPageParam: { limit: 25, page: 1 },
+  initialPageParam: { limit: 24, page: 1 },
   getNextPageParam: (lastPage, allPages, lastPageParam, allPageParams) => ({
     ...lastPageParam,
     page: lastPageParam.page + 1,

@@ -18,6 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      {/* TODO: JB: check other strategies */}
       <head>
         <Script
           strategy="beforeInteractive"
